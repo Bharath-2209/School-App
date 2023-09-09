@@ -3,11 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:"", component:LoginComponent},
-  {path:"**", component:PagenotfoundComponent},
   {path:"login", component:LoginComponent},
+  {path: "dashboard", component:DashboardComponent},
+  {path:"**", component:PagenotfoundComponent},
+
 ];
 
 @NgModule({
