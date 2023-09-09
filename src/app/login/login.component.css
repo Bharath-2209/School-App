@@ -7,11 +7,29 @@ header{
 }
 form{
     width: 300px;
-    height: 300px;
+    height: 350px;
     background-color: grey;
     border-radius: 30px;
     padding: 30px;
 }
 input{
-
+    height: 45px;
+    width: 200px;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    padding-left: 20px;
+}
+h2{
+    padding-left: 10px;
+}
+button{
+    margin-left: 50px;
+    width: 100px;
+    border-radius: 10px;
+    border: 0;
+    color: white;
+    background-color: rgb(46, 46, 187);
+    font-size: x-large;
+    text-transform: uppercase;
 }
