@@ -9,6 +9,11 @@
     height: 100%;
     background-color: brown;
     text-align: center;
+    color: white;
+}
+h3:hover{
+    cursor: pointer;
+    background-color: red;
 }
 button{
     width: 150px;
