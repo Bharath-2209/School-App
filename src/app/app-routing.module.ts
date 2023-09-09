@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
+import { CreateschoolComponent } from './createschool/createschool.component';
 
 const routes: Routes = [
   {path:"", component:LoginComponent},
   {path:"login", component:LoginComponent},
   {path: "dashboard", component:DashboardComponent, children:[
-    {path: "home", component:HomeComponent}
+    {path: "home", component:HomeComponent},
+    {path: "createschool", component:CreateschoolComponent}
   ]},
   {path:"**", component:PagenotfoundComponent},
 
