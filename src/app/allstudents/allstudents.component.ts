@@ -8,7 +8,10 @@ import { AllstudentsService } from '../allstudents.service';
 })
 export class AllstudentsComponent {
   public students: any = [];
-
+  public term:string = "";
+  public column:string = "";
+  public order:string = "";
+  
   constructor(private allStudentsService: AllstudentsService){
     allStudentsService.getAllStudents().subscribe(
       (data:any)=>{
@@ -19,6 +22,46 @@ export class AllstudentsComponent {
       }
     )
   }
+
+  // filter method
+  // filter(){
+  //   this.students = this.students.filter((value:any)=>value.name.includes(this.term))
+  // }
+  getFiltered(){
+    this.allStudentsService.getFiltered(this.term).subscribe(
+      (data:any)=>{
+        this.students = data;
+      },
+      (err:any)=>{
+        alert("internal server error")
+      }
+    )
+  }
+
+  // sort method
+  getSorted(){
+    this.allStudentsService.getSorted(this.column,this.order).subscribe(
+      (data:any)=>{
+        this.students = data;
+      },
+      (err:any)=>{
+        alert("internal server error")
+      }
+    )
+  }
+
+  // delete method
+  deleteStudent(id:any){
+    this.allStudentsService.deleteStudent(id).subscribe(
+        (data:any)=>{
+          this.students = data;
+        },
+        (err:any)=>{
+          alert("internal server error")
+        }
+      )
+  }
+
 
   
   
