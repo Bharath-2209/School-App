@@ -46,12 +46,12 @@
                     <th>Comments</th>
                     <th>Father Name</th>
                     <th>Date of birth</th>
-                    <!-- <th>HNO</th>
+                    <th>HNO</th>
                     <th>City</th>
                     <th>State</th>
                     <th>Pincode</th>
                     <th>Marks</th>
-                    <th>Type</th> -->
+                    <th>Type</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -70,14 +70,14 @@
                     <td>{{student.comments}}</td>
                     <td>{{student.fathername}}</td>
                     <td>{{student.dateofbirth}}</td>
-                    <!-- <td>{{student.address.addressLine}}</td>
-                    <td>{{student.address.city}}</td>
-                    <td>{{student.address.state}}</td>
-                    <td>{{student.address.pincode}}</td>
-                    <td>{{student.marks.class}}</td>
-                    <td>{{student.marks.year}}</td>
-                    <td>{{student.marks.percentage}}</td>
-                    <td>{{student.type}}</td> -->
+                    <td>{{student.address?.addressLine}}</td>
+                    <td>{{student.address?.city}}</td>
+                    <td>{{student.address?.state}}</td>
+                    <td>{{student.address?.pincode}}</td>
+                    <td>{{student.marks?.class}}</td>
+                    <td>{{student.marks?.year}}</td>
+                    <td>{{student.marks?.percentage}}</td>
+                    <!-- <td>{{student.type}}</td> -->
                     <td>
                         <button (click)="deleteStudent(student.id)" class="btn btn-danger">Delete</button>
                     </td>
