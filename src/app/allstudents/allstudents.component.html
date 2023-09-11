@@ -37,16 +37,9 @@
                 <tr>
                     <th>Name</th>
                     <th>Avatar</th>
-                    <th>Percentage</th>
-                    <th>Class</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Male</th>
-                    <th>Female</th>
-                    <th>Comments</th>
                     <th>Father Name</th>
-                    <th>Date of birth</th>
-                    <th>HNO</th>
+                    <th>Email</th>
+                    <th>DOB</th>
                     <th>City</th>
                     <th>State</th>
                     <th>Pincode</th>
@@ -61,25 +54,18 @@
                     <td>
                         <img src="{{student.avatar}}" alt="">
                     </td>
-                    <td>{{student.percentage}}</td>
-                    <td>{{student.class}}</td>
-                    <td>{{student.email}}</td>
-                    <td>{{student.password}}</td>
-                    <td>{{student.male}}</td>
-                    <td>{{student.female}}</td>
-                    <td>{{student.comments}}</td>
                     <td>{{student.fathername}}</td>
+                    <td>{{student.email}}</td>
                     <td>{{student.dateofbirth}}</td>
-                    <td>{{student.address?.addressLine}}</td>
                     <td>{{student.address?.city}}</td>
-                    <td>{{student.address?.state}}</td>
                     <td>{{student.address?.pincode}}</td>
                     <td>{{student.marks?.class}}</td>
-                    <td>{{student.marks?.year}}</td>
                     <td>{{student.marks?.percentage}}</td>
-                    <!-- <td>{{student.type}}</td> -->
+                    <td>{{student.type}}</td>
                     <td>
                         <button (click)="deleteStudent(student.id)" class="btn btn-danger">Delete</button>
+                        <br><br>
+                        <button class="btn btn-success">View</button>
                     </td>
                 </tr>
             </tbody>
