@@ -1,11 +1,11 @@
 <header>
-    <form action="">
+    <form [formGroup]="loginForm">
         <h2>Email</h2>
-        <input type="email" placeholder="Enter your email" >
+        <input type="email" placeholder="Enter your email" formControlName="email">
         <br><br>
         <h2>Password</h2>
-        <input type="password" placeholder="Enter your password">
+        <input type="password" placeholder="Enter your password" formControlName="password">
         <br><br>
-        <button>Login</button>
+        <button (click)="login()">Login</button>
     </form>
 </header>

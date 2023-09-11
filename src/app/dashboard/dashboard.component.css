@@ -2,14 +2,15 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    
 
 }
 .left{
     width: 20%;
-    height: 100%;
     background-color: brown;
     text-align: center;
     color: white;
+    overflow: auto;
 }
 h3:hover{
     cursor: pointer;
@@ -26,6 +27,5 @@ button{
 }
 .right{
     width: 80%;
-    height: 100%;
-    background-color: aqua;
+    overflow: auto;
 }

@@ -7,11 +7,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { CreateschoolComponent } from './createschool/createschool.component';
 import { AllstudentsComponent } from './allstudents/allstudents.component';
+import { authenticationGuard } from './authentication.guard';
 
 const routes: Routes = [
   {path:"", component:LoginComponent},
   {path:"login", component:LoginComponent},
-  {path: "dashboard", component:DashboardComponent, children:[
+  {path: "dashboard", component:DashboardComponent, canActivate:[authenticationGuard], children:[
     {path: "home", component:HomeComponent},
     {path: "createschool", component:CreateschoolComponent},
     {path: "allstudents", component:AllstudentsComponent},
