@@ -1,37 +1,119 @@
-<div class="parent" >
-    <form >
-        <div>
-        <label>Name</label>
-        <input type="text">
+<div class="parent">
+    <!-- form method -->
+    <form [formGroup]="studentForm">
+        <label>Name: </label>
+        <input type="text" formControlName="name">
+        <!-- input form validators -->
+        <div class="text-danger" *ngIf="studentForm.get('name')?.touched && studentForm.get('name')?.invalid">
+            <p *ngIf="studentForm.get('name')?.errors?.['required']">Name is required</p>
+            <p *ngIf="studentForm.get('name')?.errors?.['minlength']">Name should have min 3 characters</p>
+        </div>
         <br><br>
-        <label>Class</label>
-        <input type="number">
+
+        <label>Percentage: </label>
+        <input type="number" formControlName="percentage">
+        <!-- input form validators -->
+        <div class="text-danger" *ngIf="studentForm.get('percentage')?.touched && studentForm.get('percentage')?.invalid">
+            <p *ngIf="studentForm.get('percentage')?.errors?.['required']">Percentage is required</p>
+            <p *ngIf="studentForm.get('percentage')?.errors?.['min']">Percentage should be 1 digit</p>
+            <p *ngIf="studentForm.get('percentage')?.errors?.['max']">Percentage should not be more than 3 digits</p>
+        </div>
         <br><br>
-        <label>Father Name</label>
-        <input type="text">
+
+        <label>Class: </label>
+        <input type="number" formControlName="class">
         <br><br>
-        <label>Email</label>
-        <input type="email">
+
+        <label>Email: </label>
+        <input type="email" formControlName="email">
         <br><br>
-        <label>DOB</label>
-        <input type="date">
+
+        <label>Password: </label>
+        <input type="password" formControlName="password">
         <br><br>
-      </div>
-      <div>
-        <label>HNO</label>
-        <input type="text">
-        <br><br>
-        <label>City</label>
-        <input type="text">
-        <br><br>
-        <label>State</label>
-        <input type="text">
-        <br><br>
-        <label>Pincode</label>
-        <input type="number">
-      </div>
-      <div>
-        label
-      </div>
+
+        <!-- Nested form method -->
+        <div formGroupName="address">
+
+            <label>Hno: </label>
+            <input type="number" formControlName="addressLine">
+            <br><br>
+
+            <label>State: </label>
+            <input type="text" formControlName="state">
+            <!-- nested form validators -->
+            <div class="text-danger"
+                *ngIf="studentForm.get('address')?.get('state')?.touched && studentForm.get('address')?.get('state')?.invalid">
+                <p *ngIf="studentForm.get('address')?.get('state')?.errors?.['required']">State is required</p>
+            </div>
+            <br><br>
+
+            <label>Pin: </label>
+            <input type="number" formControlName="pin">
+            <!-- nested form validators -->
+            <div class="text-danger"
+                *ngIf="studentForm.get('address')?.get('pin')?.touched && studentForm.get('address')?.get('pin')?.invalid">
+                <p *ngIf="studentForm.get('address')?.get('pin')?.errors?.['required']">Pin is required</p>
+                <p *ngIf="studentForm.get('address')?.get('pin')?.errors?.['min']">Pin should be min 6 digits</p>
+                <p *ngIf="studentForm.get('address')?.get('pin')?.errors?.['max']">Pin should not be more than 6 digits</p>
+            </div>
+            <br><br>
+
+        </div>
+
+        <!-- Dynamic form method -->
+        <label>Type: </label>
+        <input type="radio" name="type" formControlName="type" value="dayScholor">
+        <label>Day-Scholor</label>
+        <input type="radio" name="type" formControlName="type" value="residential">
+        <label>Residential</label>
+        <br>
+
+        <div *ngIf="studentForm.get('type')?.value == 'dayScholor'">
+            <label>Bus Fee: </label>
+            <input type="number" formControlName="busfee">
+            <br>
+        </div>
+
+        <div *ngIf="studentForm.get('type')?.value == 'residential'">
+            <label>Hostel Fee: </label>
+            <input type="number" formControlName="hostelfee">
+            <br>
+        </div>
+
+        <!-- Form Array method -->
+        <button (click)="addMarks()" class="btn btn-secondary">Marks</button>
+        <div formArrayName="marks">
+            <div *ngFor="let mark of marksFormArray.controls ; let i = index">
+                <div formGroupName="{{i}}">
+                    <h4>marks {{i+1}}</h4>
+
+                    <label>Class: </label>
+                    <input type="number" formControlName="class">
+                    <br>
+
+                    <label>Year:</label>
+                    <input type="month" formControlName="year">
+                    <br>
+
+                    <label>Percent: </label>
+                    <input type="number" formControlName="percentage">
+                    <!-- array form validators -->
+                    <div class="text-danger"
+                        *ngIf="marksFormArray.controls[i]?.get('percentage')?.touched && marksFormArray.controls[i]?.get('percentage')?.invalid">
+                        <p *ngIf="marksFormArray.controls[i]?.get('percentage')?.errors?.['required']">Percent is required</p>
+                        <p *ngIf="marksFormArray.controls[i]?.get('percentage')?.errors?.['min']">Percent should be 1 digit</p>
+                        <p *ngIf="marksFormArray.controls[i]?.get('percentage')?.errors?.['max']">Percent should not be more than 3
+                            digits</p>
+                    </div>
+                    <br>
+
+                    <button (click)="deleteMarks(i)" class="btn btn-warning">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <button class="btn btn-danger" (click)="submit()">Submit</button>
     </form>
 </div>
