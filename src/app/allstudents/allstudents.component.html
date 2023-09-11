@@ -15,6 +15,23 @@
     </select>
     <button (click)="getSorted()" class="btn btn-primary">Sort</button>
 
+    <!-- pagination method -->
+    <label>Limit:</label>
+    <select [(ngModel)]="limit">
+        <option>2</option>
+        <option>4</option>
+        <option>6</option>
+        <option>8</option>
+    </select>
+    <label>Page:</label>
+    <select [(ngModel)]="page">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+    </select>
+    <button (click)="getPage()" class="btn btn-secondary">Pages</button>
+
     <table class="table table-bordered">
             <thead>
                 <tr>

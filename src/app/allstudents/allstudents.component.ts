@@ -11,6 +11,8 @@ export class AllstudentsComponent {
   public term:string = "";
   public column:string = "";
   public order:string = "";
+  public limit:string = "";
+  public page:string = "";
   
   constructor(private allStudentsService: AllstudentsService){
     allStudentsService.getAllStudents().subscribe(
@@ -54,13 +56,27 @@ export class AllstudentsComponent {
   deleteStudent(id:any){
     this.allStudentsService.deleteStudent(id).subscribe(
         (data:any)=>{
-          this.students = data;
+          alert("deleted succefully");
+          location.reload()
+
         },
         (err:any)=>{
           alert("internal server error")
         }
       )
   }
+
+  // pagination method
+   getPage(){
+    this.allStudentsService.getPage(this.limit,this.page).subscribe(
+      (data:any)=>{
+        this.students = data;
+      },
+      (err:any)=>{
+        alert("internal server error")
+      }
+    )
+   }
 
 
   

@@ -1,0 +1,10 @@
+.parent{
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}
+form{
+    background-color: aqua;
+    border-radius: 20px;
+    padding: 20px;
+}
